@@ -1,0 +1,13 @@
+// User table have new Cullum
+            $table->string('referral_code')->nullable();
+            $table->decimal('referral_bonus', 15, 2)->default(0.0);
+            $table->bigInteger('referred_by')->nullable();
+            $table->bigInteger('claim_id')->default(0);
+            $table->dateTimeTz('deleted_at')->nullable();
+            $table->string('deleted_by')->nullable();
+            role updated super_agent, super_admin is added
+
+            one culum added to wallets bunus
+            $table->decimal('bonus', 12, 2)->default(0.00);
+
+// cullum added to the registration refereal referral_code
