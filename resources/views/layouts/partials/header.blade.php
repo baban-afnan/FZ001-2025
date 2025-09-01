@@ -91,8 +91,12 @@
             <!-- User Image -->
             <div class="user-img me-2">
               <img 
-                src="{{ Auth::user()->profile_photo_url ?? asset('assets/images/profile.png') }}" 
-                alt="user" 
+               src="{{ Auth::user()->photo 
+                 ? (Str::startsWith(Auth::user()->photo, 'http') 
+                 ? Auth::user()->photo 
+                 : asset('storage/profile_photos/' . Auth::user()->photo)) 
+                : asset('assets/images/profile.png') }}" 
+                  alt="Preview" 
                 class="rounded-circle border border-2 shadow-sm"
                 style="object-fit: cover; width: 40px; height: 40px;">
             </div>

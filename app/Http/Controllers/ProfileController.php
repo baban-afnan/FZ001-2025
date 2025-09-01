@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -23,55 +25,76 @@ class ProfileController extends Controller
     }
 
     /**
-     * Update the user's profile information (no validation, no activation lock).
+     * Update the user's profile information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $user = $request->user();
+        $request->user()->fill($request->validated());
 
-        // Handle profile photo upload
-        if ($request->hasFile('photo')) {
-            // Delete old image if exists
-            if ($user->profile_photo_url && Storage::disk('public')->exists($user->profile_photo_url)) {
-                Storage::disk('public')->delete($user->profile_photo_url);
-            }
-
-            $file = $request->file('photo');
-            $filename = Str::uuid() . '.' . $file->getClientOriginalExtension();
-
-            $path = $file->storeAs('profile_photos', $filename, 'public');
-
-            $user->profile_photo_url = $path;
-            $user->photo = $filename;
+        if ($request->user()->isDirty('email')) {
+            $request->user()->email_verified_at = null;
         }
 
-        // Fill all fields (including photo if manually provided)
-        $user->fill($request->except([]));
-
-        // Reset email verification if email changed
-        if ($user->isDirty('email')) {
-            $user->email_verified_at = null;
-        }
-
-        $user->save();
+        $request->user()->save();
 
         return Redirect::route('settings.services')->with('status', 'profile-updated');
     }
 
     /**
-     * Delete the user's account (no password validation).
+     * Update BVN and Phone No if missing.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function updateRequired(Request $request): RedirectResponse
     {
-        $user = $request->user();
+        $request->validate([
+            'bvn' => 'required|digits:11',
+            'phone_no' => 'required|string|max:15',
+            'nin' => ['nullable', 'string', 'min:11', 'max:20'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'email' => ['nullable', 'email'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+        ]);
 
-        Auth::logout();
+        $user = Auth::user();
+        $user->update([
+            'bvn' => $request->bvn,
+            'phone_no' => $request->phone_no,
+        ]);
 
-        $user->delete();
+        return redirect()->route('dashboard')->with('success', 'Profile updated successfully.');
+    }
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+    /**
+     * Upload or update profile photo.
+     */
+    public function updatePhoto(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'photo' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048', // 2MB max
+        ]);
 
-        return Redirect::to('/');
+        $user = Auth::user();
+
+        try {
+            // ✅ Delete old photo if exists (and not external link)
+            if ($user->photo && !Str::startsWith($user->photo, 'http')) {
+                $oldPath = str_replace(url('/') . '/storage/', '', $user->photo);
+                Storage::disk('public')->delete($oldPath);
+            }
+
+            // ✅ Store new image
+            $path = $request->file('photo')->store('profile_photos', 'public');
+
+            // ✅ Build full HTTP link
+            $fullUrl = url('storage/' . $path);
+
+            // ✅ Save to database
+            $user->update([
+                'photo' => $fullUrl,
+            ]);
+
+            return back()->with('status', '✅ Profile photo updated successfully!');
+        } catch (\Exception $e) {
+            return back()->with('error', '❌ Failed to update profile photo: ' . $e->getMessage());
+        }
     }
 }

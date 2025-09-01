@@ -39,4 +39,10 @@ class ServicesController extends Controller
     {
         return view('profile.profile-settings');
     }
+
+
+    public function transactionPin()
+    {
+        return view('profile.transactionpin');
+    }
 }

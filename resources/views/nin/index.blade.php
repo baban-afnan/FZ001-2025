@@ -30,7 +30,7 @@
               
               <!-- Validation Service -->
               <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                <a href="#" class="card service-card h-100 text-decoration-none">
+                <a href="{{route ('validation')}}" class="card service-card h-100 text-decoration-none">
                   <div class="card-body text-center p-3">
                     <div class="icon-wrapper bg-info-light mb-3 mx-auto">
                       <img src="../assets/images/apps/nimc1.png" alt="Validation" class="img-fluid" style="width: 40px; height: 40px;">

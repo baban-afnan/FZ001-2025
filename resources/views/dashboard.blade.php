@@ -281,12 +281,12 @@
                         <div class="mb-3">
                             <label for="bvn" class="form-label fw-semibold">BVN</label>
                             <input type="text" name="bvn" id="bvn" class="form-control"
-                                   value="{{ old('bvn', Auth::user()->bvn) }}" required maxlength="11" placeholder="Enter your 11-digit BVN">
+                                   value="{{ old('bvn', Auth::user()->bvn) }}" required maxlength="11" minlength="11" placeholder="Enter your 11-digit BVN">
                         </div>
                         <div class="mb-3">
                             <label for="phone_no" class="form-label fw-semibold">Phone Number</label>
                             <input type="text" name="phone_no" id="phone_no" class="form-control"
-                                   value="{{ old('phone_no', Auth::user()->phone_no) }}" required placeholder="Enter your active phone number">
+                                   value="{{ old('phone_no', Auth::user()->phone_no) }}" required maxlength="11" minlength="11" required placeholder="Enter your active phone number">
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary"><i class="fas fa-save me-1"></i> Save & Continue</button>

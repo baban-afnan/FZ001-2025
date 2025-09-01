@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('securities', function (Blueprint $table) {
         $table->id();
         $table->foreignId('user_id')->constrained()->onDelete('cascade');
-        $table->string('pin')->nullable();
+        $table->string('transaction_pin')->nullable();
         $table->string('otp')->nullable();
         $table->timestamp('otp_expires_at')->nullable();
         $table->string('security_question_1')->nullable();
