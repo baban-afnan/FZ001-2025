@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Transaction Statement - Fee24MFB</title>
+    <title>Transaction Statement - BiyaNOW</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;

@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\MigrationFormController;
 use App\Http\Controllers\NinModificationController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +59,7 @@ Route::get('/Verification - Services', [ServicesController::class, 'verification
 Route::get('/Support - services', [ServicesController::class, 'supportServices']) ->name('support.services');
 Route::get('/profile - settings', [ServicesController::class, 'settingServices']) ->name('settings.services');
 Route::get('/transaction - pin', [ServicesController::class, 'transactionPin']) ->name('transaction.pin');
+Route::get('/vip - services', [ServicesController::class, 'vipservices']) ->name('vip.services');
 
 
 // CRM Routes
@@ -113,6 +114,9 @@ Route::get('/support', function () {$phoneNumber = env('phoneNumber');$message =
  Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
  Route::get('/export/pdf', [TransactionController::class, 'exportPdf'])->name('transactions.export.pdf');
 
+   //Vip services
+Route::post('/migration-form', [MigrationFormController::class, 'store'])->name('migration-form.store');
+
    // Nin validation services
  Route::get('/validation', [NinValidationController::class, 'index'])->name('validation');
  Route::post('/validation', [NinValidationController::class, 'store'])->name('validation.store');
@@ -121,4 +125,6 @@ Route::get('/support', function () {$phoneNumber = env('phoneNumber');$message =
 
  
 });
+
+
 require __DIR__.'/auth.php';

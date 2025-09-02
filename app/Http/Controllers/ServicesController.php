@@ -45,4 +45,21 @@ class ServicesController extends Controller
     {
         return view('profile.transactionpin');
     }
+
+
+  public function vipservices()
+    {
+    $user = auth()->user();
+
+    if ($user->role === 'agent') {
+        return view('vip.index');
+    }
+
+    if ($user->role === 'user') {
+        return view('vip.migration');
+    }
+    
+    return view('vip.error');
+}
+
 }

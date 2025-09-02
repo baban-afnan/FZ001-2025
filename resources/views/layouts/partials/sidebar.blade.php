@@ -116,14 +116,6 @@
         </ul>
       </li>
 
-      <!-- Direct Links -->
-      <li class="sidebar-list">
-        <a class="sidebar-link" href="file-manager.html">
-          <i class="bi bi-folder-fill text-secondary"></i>
-          <h6 class="fw-semibold">Vnin TO Nibss</h6>
-        </a>
-      </li>
-
       <li class="sidebar-list">
         <a class="sidebar-link" href="{{route ('enrollments.index')}}">
           <i class="bi bi-bar-chart-fill text-success"></i>
@@ -132,7 +124,7 @@
       </li>
 
        <li class="sidebar-list">
-        <a class="sidebar-link" href="javascript:void(0)">
+        <a class="sidebar-link" href="{{route ('vip.services')}}">
           <i class="bi bi-gem text-primary"></i>
           <h6 class="fw-semibold">VIP Services</h6>
         </a>

@@ -28,7 +28,7 @@ class NinValidationController extends Controller
         }
 
         $crmSubmissions = $query->orderByDesc('submission_date')
-            ->paginate(5)
+            ->paginate(3)
             ->withQueryString();
 
         $ninService = Service::where('name', 'Validation')
