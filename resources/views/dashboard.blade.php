@@ -173,7 +173,7 @@
                             
                             <!-- VIP Services -->
                             <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                                <a href="" class="card service-card h-100 text-decoration-none">
+                                <a href="{{route ('vip.services')}}" class="card service-card h-100 text-decoration-none">
                                     <div class="card-body text-center p-3">
                                         <div class="icon-wrapper bg-warning-light mb-3 mx-auto">
                                             <img src="../assets/images/apps/bvnlogo.png" alt="VIP Services" class="img-fluid" style="width: 40px; height: 40px;">
@@ -213,7 +213,7 @@
 
                               <!-- LOAN Services -->
                             <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                                <a href="" class="card service-card h-100 text-decoration-none">
+                                <a href="{{route ('vip.services')}}" class="card service-card h-100 text-decoration-none">
                                     <div class="card-body text-center p-3">
                                         <div class="icon-wrapper bg-primary-light mb-3 mx-auto">
                                             <img src="../assets/images/apps/fund.png" alt="BVN Services" class="img-fluid" style="width: 40px; height: 40px;">

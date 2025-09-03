@@ -31,6 +31,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
  // Wallet Route
 Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
 Route::post('/virtual/account/create', [WalletController::class, 'createWallet'])->name('virtual.account.create');
+Route::post('/wallet/claim-bonus', [WalletController::class, 'claimBonus'])->name('wallet.claimBonus');
+
 
 
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

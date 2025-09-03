@@ -217,6 +217,7 @@
           </div>
           <div class="col-md-8 offset-md-2">
             <h3>You are not eligible</h3>
+            <p>Make more transaction to qualify</p>
            <a class="btn btn-primary" href="{{route ('dashboard')}}">Back to Dashboard</a>
           </div>
         </div>

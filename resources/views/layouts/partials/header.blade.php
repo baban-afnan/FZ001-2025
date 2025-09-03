@@ -44,18 +44,14 @@
         <!-- Language Dropdown -->
         <li class="custom-dropdown">
           <div class="translate_wrapper">
-            <div class="current_lang"><a class="lang" href="javascript:void(0)"><i class="flag-icon flag-icon-us"></i>
-                      <h6 class="lang-txt f-w-700">ENG</h6></a></div>
+            <div class="current_lang"><a class="lang" href="javascript:void(0)"><i class="flag-icon flag-icon-ng"></i>
+                    <h6 class="lang-txt f-w-700">ENG</h6></a></div>
                   <ul class="custom-menu profile-menu language-menu py-0 more_lang">
-                                  <li class="d-block"><a class="lang" href="#" data-value="English"><i class="flag-icon flag-icon-us"></i>
-                                      <div class="lang-txt">English</div></a></li>
-                                  <li class="d-block"><a class="lang" href="#" data-value="fr"><i class="flag-icon flag-icon-ng"></i>
-                                      <div class="lang-txt">Hausa</div></a></li>
-                                  <li class="d-block"><a class="lang" href="#" data-value="es"><i class="flag-icon flag-icon-ng"></i>
-                                      <div class="lang-txt">Yuruba</div></a></li>
-                                       <li class="d-block"><a class="lang" href="#" data-value="es"><i class="flag-icon flag-icon-ng"></i>
-                                      <div class="lang-txt">Igbo</div></a></li>
-                  </ul>
+                <li class="d-block"><a class="lang" href="#" data-value="es"><i class="flag-icon flag-icon-ng"></i>
+                 <div class="lang-txt">Hausa</div></a></li>
+            <li class="d-block"><a class="lang" href="#" data-value="es"><i class="flag-icon flag-icon-ng"></i>
+         <div class="lang-txt">Yoruba</div></a></li>
+         </ul>
 
         <!-- Dark Mode & Fullscreen -->
         <li><a class="dark-mode" href="javascript:void(0)"><i class="fas fa-moon"></i></a></li>
@@ -115,15 +111,15 @@
             <ul class="profile-body">
               <li class="d-flex align-items-center">
                 <i class="fas fa-user me-2 text-primary"></i>
-                <a href="user-profile.html">Account</a>
+                <a href="{{route ('settings.services')}}">Account</a>
               </li>
               <li class="d-flex align-items-center">
                 <i class="fas fa-envelope me-2 text-success"></i>
-                <a href="letter-box.html">Inbox</a>
+                <a href="#">Inbox</a>
               </li>
               <li class="d-flex align-items-center">
-                <i class="fas fa-tasks me-2 text-warning"></i>
-                <a href="to-do.html">Task</a>
+                <i class="fas fa-user me-2 text-success"></i>
+                <a href="{{ route('support.services')}}">Support</a>
               </li>
               <li class="d-flex align-items-center">
                 <i class="fas fa-sign-out-alt me-2 text-danger"></i>
