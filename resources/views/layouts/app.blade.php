@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,35 +8,39 @@
 
     <title>Fee24mfb - {{ $title ?? 'Dashboard' }}</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="description" content="Admiro admin is super flexible, powerful, clean & modern responsive bootstrap 5 admin template with unlimited possibilities."/>
-    <meta name="keywords" content="admin template, Admiro admin template, dashboard template, bootstrap admin template, responsive admin template, web app"/>
-    <meta name="author" content="pixelstrap"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description"
+        content="Admiro admin is super flexible, powerful, clean & modern responsive bootstrap 5 admin template with unlimited possibilities." />
+    <meta name="keywords"
+        content="admin template, Admiro admin template, dashboard template, bootstrap admin template, responsive admin template, web app" />
+    <meta name="author" content="pixelstrap" />
 
     <!-- Favicon -->
-    <link rel="icon" href="{{ asset('assets/images/logo/logo.png') }}" type="image/x-icon"/>
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('assets/images/logo/logo.png') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo.png') }}" type="image/x-icon" />
 
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin/>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;500;600;700;800;900;1000&display=swap"
+        rel="stylesheet" />
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/flag-icon.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/iconly-icon.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/bulk-style.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/themify.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/weather-icons/weather-icons.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/scrollbar.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/slick.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/vendors/slick-theme.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/vendors/flag-icon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/iconly-icon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/bulk-style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/themify.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome-min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/vendors/weather-icons/weather-icons.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/vendors/scrollbar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/vendors/slick.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/vendors/slick-theme.css') }}" />
 
     <!-- App CSS -->
-    <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen"/>
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
+    <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -45,6 +50,7 @@
 
     @stack('styles')
 </head>
+
 <body>
 
     <!-- page-wrapper Start-->
@@ -53,38 +59,38 @@
     <!-- tap on tap ends-->
     <!-- loader-->
     <div class="loader-wrapper">
-      <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
-  
+
     <div class="page-wrapper compact-wrapper" id="pageWrapper">
-      @include('layouts.partials.header')
-      <div class="page-body-wrapper">
-        @include('layouts.partials.sidebar')
+        @include('layouts.partials.header')
+        <div class="page-body-wrapper">
+            @include('layouts.partials.sidebar')
 
-        <div class="page-body">
-          <div class="container-fluid">
-            @isset($header)
-              <div class="page-title">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <h2>{{ $header }}</h2>
-                  </div>
+            <div class="page-body">
+                <div class="container-fluid">
+                    @isset($header)
+                        <div class="page-title">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h2>{{ $header }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    @endisset
+
+                    <main>
+                        {{ $slot }}
+                    </main>
                 </div>
-              </div>
-            @endisset
-
-            <main>
-              {{ $slot }}
-            </main>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
- 
-      <!-- Footer -->
-    <footer class="footer"> 
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container-fluid">
-            <div class="row"> 
+            <div class="row">
                 <div class="col-md-6 footer-copyright">
                     <p class="mb-0">Copyright 2024 © fee24mfb.</p>
                 </div>
@@ -97,7 +103,7 @@
         </div>
     </footer>
 
-   <!-- Vendor JS -->
+    <!-- Vendor JS -->
     <script src="{{ asset('assets/js/vendors/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/vendors/bootstrap/dist/js/bootstrap.bundle.min.js') }}" defer></script>
     <script src="{{ asset('assets/js/vendors/bootstrap/dist/js/popper.min.js') }}" defer></script>
@@ -123,7 +129,9 @@
     <script src="{{ asset('assets/js/dashboard/dashboard_1.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
     <script src="{{ asset('assets/js/countdown.js') }}"></script>
+    <script src="{{ asset('assets/js/v1.js') }}"></script>
 
     @stack('scripts')
 </body>
+
 </html>

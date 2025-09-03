@@ -12,9 +12,11 @@
 
                         {{-- ✅ Global success/error messages from controller --}}
                         @if (session('status') && session('message'))
-                            <div class="alert alert-{{ session('status') === 'success' ? 'success' : 'danger' }} alert-dismissible fade show mt-3" role="alert">
+                            <div class="alert alert-{{ session('status') === 'success' ? 'success' : 'danger' }} alert-dismissible fade show mt-3"
+                                role="alert">
                                 {{ session('message') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                             </div>
                         @endif
 
@@ -26,7 +28,8 @@
                                         <li>{{ $error }}</li>
                                     @endforeach
                                 </ul>
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
                             </div>
                         @endif
                     </div>
@@ -37,15 +40,9 @@
 
                             <div class="col-12">
                                 <label class="form-label">NIN Number <span class="text-danger">*</span></label>
-                                <input 
-                                    class="form-control" 
-                                    name="number_nin" 
-                                    type="text" 
-                                    placeholder="Enter 11 Digit NIN" 
-                                    maxlength="11" minlength="11" 
-                                    pattern="[0-9]{11}" 
-                                    required 
-                                    value="{{ old('number_nin') }}">
+                                <input class="form-control" name="number_nin" type="text"
+                                    placeholder="Enter 11 Digit NIN" maxlength="11" minlength="11" pattern="[0-9]{11}"
+                                    required value="{{ old('number_nin') }}">
                             </div>
 
                             <div class="col-12">
@@ -72,20 +69,19 @@
                         <h3>Verification Information</h3>
                     </div>
 
-                    @if(session('verification') && session('verification')->status === 'verified')
+                    @if (session('verification'))
                         <div class="card-body">
                             <div class="alert alert-success text-center">
                                 <strong>Verification Successful!</strong>
                             </div>
 
                             {{-- Centered Photo if available --}}
-                            @if(!empty(session('verification')->photo_path))
+                            @if (!empty(session('verification')->photo_path))
                                 <div class="text-center mb-3">
                                     <div class="id-photo-container d-inline-block p-2 border rounded bg-white">
-                                        <img src="data:image/jpeg;base64,{{ session('verification')->photo_path }}" 
-                                             alt="ID Photo" 
-                                             class="img-fluid rounded shadow-sm" 
-                                             style="max-height:200px;">
+                                        <img src="data:image/jpeg;base64, {{ session('verification')['data']['photo'] }}"
+                                            alt="ID Photo" class="img-fluid rounded shadow-sm"
+                                            style="max-height:200px;">
                                         <div class="mt-1" style="font-size: 0.8rem;">PHOTO</div>
                                     </div>
                                 </div>
@@ -95,45 +91,49 @@
                                 <tbody>
                                     <tr>
                                         <th>NIN Number</th>
-                                        <td>{{ session('verification')->number_nin }}</td>
+                                        <td>{{ session('verification')['data']['nin'] }}
+                                            <span id="nin_no"
+                                                hidden>{{ session('verification')['data']['nin'] }}</span>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>First Name</th>
-                                        <td>{{ session('verification')->firstname }}</td>
+                                        <td>{{ session('verification')['data']['firstName'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>Last Name</th>
-                                        <td>{{ session('verification')->surname }}</td>
+                                        <td>{{ session('verification')['data']['surname'] }}</td>
                                     </tr>
                                     <tr>
                                         <th>Middle Name</th>
-                                        <td>{{ session('verification')->middlename ?? 'N/A' }}</td>
+                                        <td>{{ session('verification')['data']['middleName'] ?? 'N/A' }}</td>
                                     </tr>
                                     <tr>
                                         <th>Date of Birth</th>
                                         <td>
-                                            {{ !empty(session('verification')->birthdate) 
-                                                ? \Carbon\Carbon::parse(session('verification')->birthdate)->format('d M, Y') 
+                                            {{ !empty(session('verification')['data']['birthDate'])
+                                                ? \Carbon\Carbon::parse(session('verification')['data']['birthDate'])->format('d M, Y')
                                                 : 'N/A' }}
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Gender</th>
-                                        <td>{{ ucfirst(session('verification')->gender ?? 'N/A') }}</td>
+                                        <td>{{ ucfirst(session('verification')['data']['gender'] ?? 'N/A') }}</td>
                                     </tr>
                                     <tr>
                                         <th>Phone</th>
-                                        <td>{{ session('verification')->telephoneno ?? 'N/A' }}</td>
+                                        <td>{{ session('verification')['data']['telephoneNo'] ?? 'N/A' }}</td>
                                     </tr>
                                 </tbody>
                             </table>
 
                             <div class="text-center">
-                                <a href="#" class="btn btn-primary btn-wave me-2">
-                                    <i class="bi bi-download"></i> Standard NIN Slip 
+                                <a href="#" id="standardSlip" class="btn btn-primary btn-wave me-2">
+                                    <i class="bi bi-download"></i> Standard NIN Slip
                                 </a>
-                                <a href="#" class="btn btn-secondary btn-wave">
-                                    <i class="bi bi-download"></i> Premium NIN Slip 
+
+                                <a href="#" id="premiumSlip" class="btn btn-secondary btn-wave">
+                                    <i class="bi bi-download"></i> Premium NIN Slip
                                 </a>
                             </div>
                         </div>
