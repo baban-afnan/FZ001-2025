@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         // Add 'refund' to the ENUM options for the 'type' column
-        DB::statement("ALTER TABLE transactions MODIFY COLUMN type ENUM('credit', 'debit', 'refund') NOT NULL");
+        DB::statement("ALTER TABLE transactions MODIFY COLUMN type ENUM('refund', 'chargeback') NOT NULL");
     }
 
     /**

@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->decimal('fee', 10, 2)->default(0.00);
             $table->decimal('net_amount', 10, 2)->default(0.00);
             $table->string('description')->nullable();
-            $table->enum('type', ['credit', 'debit']);
+            $table->enum('type', ['credit', 'debit', 'refund', 'chargeback']);
             $table->enum('status', ['pending', 'completed', 'failed', 'reversed', 'rejected', 'query'])->default('pending');
             $table->json('metadata')->nullable(); 
             $table->timestamps();

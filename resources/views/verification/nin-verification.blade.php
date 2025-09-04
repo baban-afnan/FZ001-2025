@@ -76,11 +76,20 @@
                             </div>
 
                             {{-- Centered Photo if available --}}
-                            @if (!empty(session('verification')->photo_path))
+                            @if (!empty(session('verification')['data']['photo']))
                                 <div class="text-center mb-3">
                                     <div class="id-photo-container d-inline-block p-2 border rounded bg-white">
                                         <img src="data:image/jpeg;base64, {{ session('verification')['data']['photo'] }}"
                                             alt="ID Photo" class="img-fluid rounded shadow-sm"
+                                            style="max-height:200px;">
+                                        <div class="mt-1" style="font-size: 0.8rem;">PHOTO</div>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="text-center mb-3">
+                                    <div class="id-photo-container d-inline-block p-2 border rounded bg-white">
+                                        <img src="{{ asset('assets/images/corrupt.jpg') }}"
+                                            alt="Corrupt Image" class="img-fluid rounded shadow-sm"
                                             style="max-height:200px;">
                                         <div class="mt-1" style="font-size: 0.8rem;">PHOTO</div>
                                     </div>

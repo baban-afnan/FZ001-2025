@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Ninverification;
-
+use App\Models\Verification;
 use TCPDF;
 
 class NIN_PDF_Repository
@@ -26,7 +26,7 @@ class NIN_PDF_Repository
                 "lga" => $verifiedRecord->lga,
                 "state" => $verifiedRecord->state,
                 "gender" => ($verifiedRecord->gender === 'Male') ? "M" : "F",
-                "dob" => $verifiedRecord->dob,
+                "birthdate" => $verifiedRecord->birthdate,
                 "photo" => str_replace('data:image/jpg;base64,', '', $verifiedRecord->photo)
             ];
 
@@ -111,7 +111,7 @@ class NIN_PDF_Repository
                 "lga" => $verifiedRecord->residence_lga,
                 "state" => $verifiedRecord->residence_state,
                 "gender" => ($verifiedRecord->gender === 'Male') ? "M" : "F",
-                "dob" => $verifiedRecord->dob,
+                "birthdate" => $verifiedRecord->birthdate,
                 "photo" => str_replace('data:image/jpg;base64,', '', $verifiedRecord->photo_path)
             ];
 
@@ -144,7 +144,7 @@ class NIN_PDF_Repository
                 'fgcolor' => [0, 0, 0],
                 'bgcolor' => [255, 255, 255]
             ];
-            $datas = '{NIN: ' . $ninData['nin'] . ', NAME:' . html_entity_decode($ninData['fName']) . ' ' . html_entity_decode($ninData['mName']) . ' ' . html_entity_decode($ninData['sName']) . ', DOB: ' . $ninData['dob'] . ', Status:Verified}';
+            $datas = '{NIN: ' . $ninData['nin'] . ', NAME:' . html_entity_decode($ninData['fName']) . ' ' . html_entity_decode($ninData['mName']) . ' ' . html_entity_decode($ninData['sName']) . ', birthdate: ' . $ninData['birthdate'] . ', Status:Verified}';
             $pdf->write2DBarcode($datas, 'QRCODE,H', 131.2, 64.7, 14.2, 13.5, $style, 'H');
             $pdf->Image('assets/card_and_Slip/pin.jpg', 135.8, 69.5, 4.5, 4.5, '', '', '', false, 300, '', false, false, 0);
 
@@ -156,7 +156,7 @@ class NIN_PDF_Repository
             $pdf->SetFont('helvetica', '', 8);
             $pdf->Text(91.5, 65, html_entity_decode($ninData['sName']));
             $pdf->Text(91.5, 72, html_entity_decode($ninData['fName']) . ', ' . html_entity_decode($ninData['mName']));
-            $newD = strtotime($ninData['dob']);
+            $newD = strtotime($ninData['birthdate']);
             $cdate = date("d M Y", $newD);
             $pdf->Text(91.5, 78.7, $cdate);
 
@@ -209,7 +209,7 @@ class NIN_PDF_Repository
                 "lga" => $verifiedRecord->residence_lga,
                 "state" => $verifiedRecord->residence_state,
                 "gender" => ($verifiedRecord->gender === 'Male') ? "M" : "F",
-                "dob" => $verifiedRecord->dob,
+                "birthdate" => $verifiedRecord->birthdate,
                 "photo" => str_replace('data:image/jpg;base64,', '', $verifiedRecord->photo_path)
             ];
 
@@ -242,7 +242,7 @@ class NIN_PDF_Repository
                 'fgcolor' => [0, 0, 0],
                 'bgcolor' => [255, 255, 255]
             ];
-            $datas = '{NIN: ' . $ninData['nin'] . ', NAME: ' . html_entity_decode($ninData['fName']) . ' ' . html_entity_decode($ninData['mName']) . ' ' . html_entity_decode($ninData['sName']) . ', DOB: ' . $ninData['dob'] . ', Status:Verified}';
+            $datas = '{NIN: ' . $ninData['nin'] . ', NAME: ' . html_entity_decode($ninData['fName']) . ' ' . html_entity_decode($ninData['mName']) . ' ' . html_entity_decode($ninData['sName']) . ', birthdate: ' . $ninData['birthdate'] . ', Status:Verified}';
             $pdf->write2DBarcode($datas, 'QRCODE,H', 128, 53, 20, 20, $style, 'H');
 
             // Add image from base64
@@ -259,8 +259,8 @@ class NIN_PDF_Repository
             $pdf->SetFont('helvetica', '', 9);
             $pdf->Text(93.3, 73.5, $othername);
 
-            $dob = $ninData['dob'];
-            $newD = strtotime($dob);
+            $birthdate = $ninData['birthdate'];
+            $newD = strtotime($birthdate);
             $cdate = date("d M Y", $newD);
             $pdf->SetFont('helvetica', '', 8);
             $pdf->Text(93.3, 80.5, $cdate);

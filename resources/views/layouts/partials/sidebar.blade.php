@@ -95,7 +95,7 @@
         </a>
         <ul class="sidebar-submenu">
           <li><a href="{{route ('nin-modification')}}">NIN Modification</a></li>
-          <li><a href="#">Validation</a></li>
+          <li><a href="{{route ('validation')}}">Validation</a></li>
           <li><a href="#">IPE</a></li>
           <li><a href="#">Self Service</a></li>
         </ul>
@@ -109,7 +109,7 @@
           <i class="bi bi-chevron-right"></i>
         </a>
         <ul class="sidebar-submenu">
-          <li><a href="#">NIN</a></li>
+          <li><a href="{{route ('nin.verification.index')}}">NIN</a></li>
           <li><a href="#">BVN</a></li>
           <li><a href="#">Personalisation</a></li>
           <li><a href="#">NIN DEMO</a></li>
