@@ -1,6 +1,14 @@
 <x-app-layout>
   <x-slot name="title">NIN Services</x-slot>
-
+    <div class="page-body">
+    <div class="container-fluid">
+      <div class="page-title">
+        <div class="row">
+          <div class="col-sm-6 col-12">
+          </div>
+        </div>
+      </div>
+    </div>
   <div class="container-fluid">
     <!-- NIN Services Section -->
     <div class="row mb-4">
@@ -43,13 +51,25 @@
               
               <!-- IPE Service -->
               <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                <a href="#" class="card service-card h-100 text-decoration-none">
+                <a href="{{ route('ipe') }}" class="card service-card h-100 text-decoration-none">
                   <div class="card-body text-center p-3">
                     <div class="icon-wrapper bg-success-light mb-3 mx-auto">
                       <img src="../assets/images/apps/nimc1.png" alt="IPE" class="img-fluid" style="width: 40px; height: 40px;">
                     </div>
                     <h5 class="mb-0 fw-bold">IPE</h5>
                     <small class="text-muted">Identity Platform</small>
+                  </div>
+                </a>
+              </div>
+               <!-- selfService assistance -->
+              <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
+                <a href="{{ route('selfservice') }}" class="card service-card h-100 text-decoration-none">
+                  <div class="card-body text-center p-3">
+                    <div class="icon-wrapper bg-success-light mb-3 mx-auto">
+                      <img src="../assets/images/apps/nimc1.png" alt="IPE" class="img-fluid" style="width: 40px; height: 40px;">
+                    </div>
+                    <h5 class="mb-0 fw-bold">SelfService</h5>
+                    <small class="text-muted">Account</small>
                   </div>
                 </a>
               </div>

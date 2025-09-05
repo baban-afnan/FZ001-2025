@@ -11,8 +11,14 @@ class Transaction extends Model
     protected $table = 'transactions'; 
     
     protected $fillable = [
-        'transaction_ref', 'user_id', 'amount', 'description',
-        'type', 'status', 'metadata'
+        'transaction_ref', 
+        'user_id', 
+        'amount', 
+        'description',
+        'type', 
+        'status', 
+        'metadata', 
+        'pperformed_by'
     ];
 
     protected $casts = [

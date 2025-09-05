@@ -96,8 +96,8 @@
         <ul class="sidebar-submenu">
           <li><a href="{{route ('nin-modification')}}">NIN Modification</a></li>
           <li><a href="{{route ('validation')}}">Validation</a></li>
-          <li><a href="#">IPE</a></li>
-          <li><a href="#">Self Service</a></li>
+          <li><a href="{{route ('ipe')}}">IPE</a></li>
+          <li><a href="{{route ('selfservice')}}">Self Service</a></li>
         </ul>
       </li>
 

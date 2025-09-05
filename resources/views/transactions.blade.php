@@ -1,11 +1,15 @@
 <x-app-layout>
     <x-slot name="title">Transaction History</x-slot>
-
+    <div class="page-body">
     <div class="container-fluid">
+      <div class="page-title">
         <div class="row">
-            <div class="col-12">
-
-                {{-- Error Alert --}}
+          <div class="col-sm-6 col-12">
+          </div>
+        </div>
+      </div>
+       </div>
+        {{-- Error Alert --}}
                 @if (session('error'))
                     <div class="alert alert-danger alert-dismissible fade show shadow-sm">
                         <div class="d-flex align-items-center">

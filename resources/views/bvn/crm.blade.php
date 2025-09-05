@@ -1,9 +1,17 @@
 <x-app-layout>
     <x-slot name="title">BVN CRM Request Form</x-slot>
-
+      <div class="page-body">
+    <div class="container-fluid">
+      <div class="page-title">
+        <div class="row">
+          <div class="col-sm-6 col-12">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container-fluid">
         <div class="row">
-            <!-- BVN Validation Form -->
+            <!-- BVN crm Form -->
             <div class="col-xl-6 mb-4">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">

@@ -1,6 +1,14 @@
 <x-app-layout>
   <x-slot name="title">VIP Services</x-slot>
-
+   <div class="page-body">
+    <div class="container-fluid">
+      <div class="page-title">
+        <div class="row">
+          <div class="col-sm-6 col-12">
+          </div>
+        </div>
+      </div>
+   </div>
   <div class="container-fluid">
     <!-- VIP Services Section -->
     <div class="row mb-4">
@@ -23,7 +31,7 @@
                       <img src="../assets/images/apps/bvnlogo.png" alt="CRM" class="img-fluid" style="width: 40px; height: 40px;">
                     </div>
                     <h5 class="mb-0 fw-bold">CRM</h5>
-                    <small class="text-muted">Premium Customer Support</small>
+                    <small class="text-muted">10% discount</small>
                   </div>
                 </a>
               </div>
@@ -36,49 +44,60 @@
                       <img src="../assets/images/apps/bvnlogo.png" alt="BVN User" class="img-fluid" style="width: 40px; height: 40px;">
                     </div>
                     <h5 class="mb-0 fw-bold">BVN User</h5>
-                    <small class="text-muted">Priority Access</small>
+                    <small class="text-muted">10% discount</small>
                   </div>
                 </a>
               </div>
               
               <!-- VNIN to NIBSS -->
               <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                <a href="{{ route('send-vnin.index') }}" class="card vip-service-card h-100 text-decoration-none">
+                <a href="{{route ('send-vnin')}}" class="card vip-service-card h-100 text-decoration-none">
                   <div class="card-body text-center p-3">
                     <div class="vip-icon-wrapper bg-gold-light mb-3 mx-auto">
                       <img src="../assets/images/apps/bvnlogo.png" alt="VNIN to NIBSS" class="img-fluid" style="width: 40px; height: 40px;">
                     </div>
                     <h5 class="mb-0 fw-bold">VNIN to NIBSS</h5>
-                    <small class="text-muted">Express Processing</small>
+                    <small class="text-muted">10% discount</small>
                   </div>
                 </a>
               </div>
               
               <!-- VIP Modification -->
               <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                <a href="{{ route('vip-modification') }}" class="card vip-service-card h-100 text-decoration-none">
+                <a href="{{route ('vip-modification')}}" class="card vip-service-card h-100 text-decoration-none">
                   <div class="card-body text-center p-3">
                     <div class="vip-icon-wrapper bg-gold-light mb-3 mx-auto">
                       <img src="../assets/images/apps/bvnlogo.png" alt="Modification" class="img-fluid" style="width: 40px; height: 40px;">
                     </div>
                     <h5 class="mb-0 fw-bold">Modification</h5>
-                    <small class="text-muted">Dedicated Assistance</small>
+                    <small class="text-muted">Other Banks in nigeria</small>
                   </div>
                 </a>
               </div>
               
               <!-- Get BVN Link -->
               <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                <a href="{{ route('phone.search.index') }}" class="card vip-service-card h-100 text-decoration-none">
+                <a href="#" class="card vip-service-card h-100 text-decoration-none">
                   <div class="card-body text-center p-3">
                     <div class="vip-icon-wrapper bg-gold-light mb-3 mx-auto">
-                      <img src="../assets/images/apps/bvnlogo.png" alt="Get BVN Link" class="img-fluid" style="width: 40px; height: 40px;">
+                      <img src="../assets/images/apps/court.png" alt="Get BVN Link" class="img-fluid" style="width: 40px; height: 40px;">
                     </div>
-                    <h5 class="mb-0 fw-bold">BVN Link P/N</h5>
-                    <small class="text-muted">Instant Lookup</small>
+                    <h5 class="mb-0 fw-bold">Affidavit</h5>
+                    <small class="text-muted">Affidavit for all your need</small>
                   </div>
                 </a>
               </div>
+               <!-- Nin verification Link -->
+              <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
+                <a href="{{route ('nin.verification.index')}}" class="card vip-service-card h-100 text-decoration-none">
+                  <div class="card-body text-center p-3">
+                    <div class="vip-icon-wrapper bg-gold-light mb-3 mx-auto">
+                      <img src="../assets/images/apps/nimc1.png" alt="Get BVN Link" class="img-fluid" style="width: 40px; height: 40px;">
+                    </div>
+                    <h5 class="mb-0 fw-bold">Identity Verification</h5>
+                    <small class="text-muted">10% discount</small>
+                  </div>
+                </a>
             </div>
           </div>
         </div>

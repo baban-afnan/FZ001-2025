@@ -1,5 +1,14 @@
 <x-app-layout>
      <x-slot name="title">Support - Service</x-slot>
+     <div class="page-body">
+    <div class="container-fluid">
+      <div class="page-title">
+        <div class="row">
+          <div class="col-sm-6 col-12">
+          </div>
+        </div>
+      </div>
+    </div>
     <head>
         <!-- Bootstrap Icons -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">

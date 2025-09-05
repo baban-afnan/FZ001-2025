@@ -19,6 +19,9 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\PinController;
 use App\Http\Controllers\SQAController;
 use App\Http\Controllers\NinValidationController;
+use App\Http\Controllers\NinipeController;
+use App\Http\Controllers\selfserviceController;
+use App\Http\Controllers\VIPModificationController;
 
 
 
@@ -129,6 +132,27 @@ Route::post('/virtual/account/create', [WalletController::class, 'createWallet']
     Route::post('/validation', [NinValidationController::class, 'store'])->name('validation.store');
     Route::get('/validation/price', [NinValidationController::class, 'getFieldPrice'])->name('validation.price');
     Route::get('/validation/{id}/details', [NinValidationController::class, 'showDetails'])->name('validation.details');
+    
+
+     // Nin selfservice services
+    Route::get('/selfservice', [selfserviceController::class, 'index'])->name('selfservice');
+    Route::post('/selfservice', [selfserviceController::class, 'store'])->name('selfservice.store');
+    Route::get('/selfservice/price', [selfserviceController::class, 'getFieldPrice'])->name('selfservice.price');
+    Route::get('/selfservice/{id}/details', [selfserviceController::class, 'showDetails'])->name('selfservice.details');
+
+
+    // NIN ipe Routes
+    Route::get('/ipe/{id}/details', [NinipeController::class, 'showDetails'])->name('ipe.details');
+    Route::get('/ipe/price', [NinipeController::class, 'getFieldPrice'])->name('ipe.price')    ->middleware('auth');
+    Route::get('/ipe', [NinipeController::class, 'index'])->name('ipe');
+    Route::post('/ipe', [NinipeController::class, 'store'])->name('ipe.store');
+
+
+    // BVN MODIFICATION VIP
+    Route::get('/modification-fields/{service_id}', [App\Http\Controllers\VIPModificationController::class, 'getModificationFields']);
+    Route::get('/vip-modification', [VIPModificationController::class, 'index'])->name('vip-modification');
+    Route::post('/vip-modification', [VIPModificationController::class, 'store'])->name('vip-modification.store');
+
 });
 
 

@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
-class BvnModificationController extends Controller
+class VIPModificationController extends Controller
 {
     public function index(Request $request)
     {
@@ -35,7 +35,7 @@ class BvnModificationController extends Controller
 
         $crmSubmissions = $query->orderByDesc('submission_date')->paginate(5)->withQueryString();
 
-        return view('bvn.modification', [
+        return view('vip.modification', [
             'banks' => AvailableBank::all(),
             'crmSubmissions' => $crmSubmissions,
             'bankServices' => $bankServices,
@@ -76,7 +76,7 @@ class BvnModificationController extends Controller
         // Fetch affidavit field
         $affidavitField = ModificationField::where('field_name', 'Affidavit')->first();
         if (!$affidavitField) {
-            return redirect()->route('modification')->withErrors(['affidavit' => 'Affidavit field not found in the database.'])->withInput();
+            return redirect()->route('vip.modification')->withErrors(['affidavit' => 'Affidavit field not found in the database.'])->withInput();
         }
 
         $affidavitFee = $affidavitField->getPriceForUserType($role);
@@ -105,7 +105,7 @@ class BvnModificationController extends Controller
             // Debit wallet
             $wallet->decrement('wallet_balance', $totalAmount);
 
-            $transactionRef = 'MOD-' . time() . '-' . mt_rand(100, 999);
+            $transactionRef = 'MOD-' . substr(time(), -5) . '-' . mt_rand(100, 999);
             $performedBy = $user->first_name . ' ' . $user->last_name;
 
             $transaction = Transaction::create([
@@ -150,6 +150,7 @@ class BvnModificationController extends Controller
                 'status'                    => 'pending',
                 'comment'                   => null,
                 'performed_by'              => $performedBy,
+
             ]);
 
             DB::commit();
@@ -160,7 +161,7 @@ class BvnModificationController extends Controller
             }
             $msg .= " = NGN " . number_format($totalAmount, 2);
 
-            return redirect()->route('modification')->with([
+            return redirect()->route('vip-modification')->with([
                 'status' => 'success',
                 'message' => $msg
             ]);

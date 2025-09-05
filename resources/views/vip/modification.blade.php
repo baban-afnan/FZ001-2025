@@ -1,6 +1,6 @@
 <x-app-layout>
-    <x-slot name="title">BVN Modification</x-slot>
-    <div class="page-body">
+    <x-slot name="title">VIP BVN Modification</x-slot>
+     <div class="page-body">
     <div class="container-fluid">
       <div class="page-title">
         <div class="row">
@@ -8,16 +8,16 @@
           </div>
         </div>
       </div>
-    </div>
-
+   </div>
     <div class="container-fluid">
         <div class="row">
             <!-- BVN Modification Form -->
             <div class="col-xl-6 mb-4">
                 <div class="card">
                     <div class="card-header card-no-border pb-0">
-                        <h3>BVN Modification Form</h3>
-                        <p class="mt-1 mb-0">Request for BVN modification. Note that the modification is treated based on NIBSS regulation.</p>
+                        <h3>VIP BVN Modification Form</h3>
+                        <p class="mt-1 mb-0">Request for BVN modification. Note that the modification is treated based on NIBSS regulation. 
+                            Know that each request can take upto 7 working days</p>
 
                         @if (session('message'))
                             <div class="alert alert-{{ session('status') === 'success' ? 'success' : 'danger' }} alert-dismissible fade show mt-3" role="alert">
@@ -39,7 +39,7 @@
                     </div>
 
                     <div class="card-body custom-input form-validation">
-                        <form class="row g-3" method="POST" action="{{ route('modification.store') }}" enctype="multipart/form-data">
+                        <form class="row g-3" method="POST" action="{{ route('vip-modification.store') }}" enctype="multipart/form-data">
                             @csrf
 
                            <div class="col-12">
@@ -62,12 +62,12 @@
                                </div>
                             <div class="col-12">
                                 <label class="form-label">BVN <span class="text-danger">*</span></label>
-                                <input class="form-control" name="bvn" type="text" maxlength="11" minlength="11" placeholder="22123456789" required value="{{ old('bvn') }}">
+                                <input class="form-control" name="bvn" type="text" maxlength="11" minlength="11" required value="{{ old('bvn') }}">
                             </div>
 
                             <div class="col-12">
                                 <label class="form-label">NIN ID <span class="text-danger">*</span></label>
-                                <input class="form-control" name="nin" type="text" maxlength="11" minlength="11" placeholder="51667353109" required value="{{ old('nin') }}">
+                                <input class="form-control" name="nin" type="text" maxlength="11" minlength="11" required value="{{ old('nin') }}">
                             </div>
 
                             <div class="col-12">
@@ -77,7 +77,12 @@
                                         View Sample
                                     </button>
                                 </label>
-                                <textarea class="form-control" name="description" rows="4" placeholder="Enter New information" required>{{ old('description') }}</textarea>
+                                <textarea class="form-control" name="description" rows="4" required>{{ old('description') }}</textarea>
+                            </div>
+
+                              <div class="col-12">
+                                <label class="form-label">ENROLLMENT BANK <span class="text-danger">*</span></label>
+                                <input class="form-control" name="bank" type="text" required value="{{ old('bank') }}">
                             </div>
 
                             <div class="col-12">
@@ -107,7 +112,7 @@
                 </div>
             </div>
 
- <!-- Submission Report -->
+           <!-- Submission Report -->
 <div class="col-xl-6">
     <div class="card">
         <div class="card-header card-no-border pb-0">
@@ -138,7 +143,6 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Request ID</th>
                             <th>Bank</th>
                             <th>BVN</th>
                             <th>Status</th>
@@ -149,8 +153,7 @@
                         @forelse ($crmSubmissions as $index => $submission)
                             <tr>
                                 <td>{{ $loop->iteration + $crmSubmissions->firstItem() - 1 }}</td>
-                                <td>{{ $submission->reference }}</td>
-                                <td>{{ $submission->service_name }}</td>
+                                <td>{{ $submission->bank }}</td>
                                 <td>{{ $submission->bvn }}</td>
                                 <td>
                                     <span class="badge bg-{{ match($submission->status) {
@@ -193,6 +196,7 @@
 
     <!-- Comment Modal -->
     @include('forms.comment')
+
     <!-- Sample Info Modal -->
     <div class="modal fade" id="sampleInfoModal" tabindex="-1" aria-labelledby="sampleInfoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">

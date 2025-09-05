@@ -26,6 +26,7 @@ class BvnModification extends Model
     'submission_date',
     'status',
     'comment',
+    'performed_by',
 ];
 
 
