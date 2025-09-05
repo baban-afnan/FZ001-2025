@@ -17,6 +17,8 @@ class SupportTicket extends Model
         'status',
         'user_id',
         'attachment',
+        'performed_by',
+        'approved_by',
     ];
 
     // Relationship with User

@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->string('nin', 50);
             $table->string('description', 150);
             $table->string('performed_by', 150)->nullable();
+            $table->string('approved_by', 150)->nullable();
             $table->string('affidavit', 50);
             $table->string('affidavit_file')->nullable();
             $table->string('affidavit_file_url')->nullable();

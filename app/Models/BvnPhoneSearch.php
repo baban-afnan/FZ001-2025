@@ -15,6 +15,9 @@ class BvnPhoneSearch extends Model
         'status',
         'reason',
         'refunded_at',
+        'performed_by',
+        'approved_by',
+        'comment',
     ];
 
     public function user()

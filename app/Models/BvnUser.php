@@ -35,6 +35,8 @@ class BvnUser extends Model
         'submission_date',
         'comment',
         'query',
+        'performed_by',
+        'approved_by',
     ];
 
     public function user()

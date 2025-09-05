@@ -155,6 +155,7 @@ class BvnUserController extends Controller
         DB::beginTransaction();
         try {
             $transactionRef = 'AGN-' . time() % 1000000000 . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             $transaction = Transaction::create([
                 'transaction_ref' => $transactionRef,
@@ -163,6 +164,7 @@ class BvnUserController extends Controller
                 'description' => "BVN User for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'BVN USER',
                     'modification_field' => $modificationField->field_name,
@@ -195,6 +197,7 @@ class BvnUserController extends Controller
                 'lga' => $validated['lga'],
                 'address' => $validated['address'],
                 'agent_location' => $validated['agent_location'],
+                'performed_by'    => $performedBy, 
                 'transaction_id' => $transaction->id,
                 'submission_date' => now(),
                 'status' => 'pending',

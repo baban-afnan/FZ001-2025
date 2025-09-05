@@ -22,6 +22,8 @@ class Security extends Model
         'security_answer_3',
         'security_question_4',
         'security_answer_4',
+        'performed_by',
+        'approved_by',
     ];
 
     protected $casts = [

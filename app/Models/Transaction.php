@@ -18,7 +18,8 @@ class Transaction extends Model
         'type', 
         'status', 
         'metadata', 
-        'pperformed_by'
+        'performed_by',
+        'approved_by',
     ];
 
     protected $casts = [

@@ -17,6 +17,8 @@ return new class extends Migration {
             $table->text('comment')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->string('attachment')->nullable();
+            $table->string('performed_by', 150)->nullable();
+            $table->string('approved_by', 150)->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

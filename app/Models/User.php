@@ -35,6 +35,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'referral_code',
         'referral_bonus',
         'referred_by',
+        'performed_by',
+        'approved_by',
 
         // Other
         'claim_id',

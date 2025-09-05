@@ -62,6 +62,7 @@ class SupportController extends Controller
         do {
             $ticketId = rand(10000, 99999);
         } while (SupportTicket::where('ticket_id', $ticketId)->exists());
+        $performedBy = $user->first_name . ' ' . $user->last_name;
 
         // Create ticket
         $ticket = SupportTicket::create([
@@ -69,6 +70,7 @@ class SupportController extends Controller
             'transaction_ref' => $request->transaction_ref,
             'category'        => $request->category,
             'content'         => $request->content,
+            'performed_by'    => $performedBy, 
             'status'          => 'pending',
             'user_id'         => auth()->id(),
         ]);

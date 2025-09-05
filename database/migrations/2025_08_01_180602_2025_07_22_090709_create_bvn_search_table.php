@@ -22,7 +22,9 @@ return new class extends Migration {
     $table->string('dob')->nullable(); 
     $table->string('email')->nullable();
     $table->string('lga')->nullable();   
-    $table->string('state')->nullable();  
+    $table->string('state')->nullable(); 
+    $table->string('performed_by', 150)->nullable();
+    $table->string('approved_by', 150)->nullable();       
     $table->foreignId('transaction_id')->constrained();
     $table->dateTime('submission_date');
     $table->enum('status', ['pending', 'processing', 'resolved', 'rejected', 'query', 'remark'])->default('pending');

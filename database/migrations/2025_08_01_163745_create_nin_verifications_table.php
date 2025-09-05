@@ -41,8 +41,9 @@ class CreateNinVerificationsTable extends Migration
             $table->longText('signature_path')->nullable();
             $table->string('trackingId')->nullable();
             $table->string('userid')->nullable();
-
-            // Next of Kin
+            $table->string('performed_by', 150)->nullable();
+            $table->string('approved_by', 150)->nullable();
+            
             $table->string('nok_firstname')->nullable();
             $table->string('nok_middlename')->nullable();
             $table->string('nok_surname')->nullable();

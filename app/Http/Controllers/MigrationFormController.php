@@ -41,6 +41,10 @@ class MigrationFormController extends Controller
         // Generate reference number
         $validated['reference'] = 'MIG-' . strtoupper(uniqid());
 
+        // Get user info
+        $user = Auth::user();
+        $performedBy = $user->first_name . ' ' . $user->last_name;
+
         // Save uploaded files with absolute URL
         if ($request->hasFile('office_image')) {
             $path = $request->file('office_image')->store('migration_files', 'public');
@@ -57,8 +61,9 @@ class MigrationFormController extends Controller
             $validated['cac_upload'] = url(Storage::url($path));
         }
 
-        // Attach user ID
-        $validated['user_id'] = Auth::id();
+        // Attach user ID and performer
+        $validated['user_id'] = $user->id;
+        $validated['performed_by'] = $performedBy;
 
         // Default status when submitting
         $validated['status'] = 'pending';
@@ -68,11 +73,11 @@ class MigrationFormController extends Controller
 
         // Send custom email to user
         Mail::send('emails.migration_custom', [
-            'user'      => Auth::user(),
+            'user'      => $user,
             'reference' => $validated['reference'],
             'form'      => $form,
-        ], function ($message) {
-            $message->to(Auth::user()->email)
+        ], function ($message) use ($user) {
+            $message->to($user->email)
                     ->subject('Migration Form Submitted Successfully');
         });
 

@@ -127,12 +127,14 @@ class BvnServicesController extends Controller
         DB::beginTransaction();
         try {
             $reference = $serviceKey . '-' . time() . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             // Log transaction
             $transaction = Transaction::create([
                 'transaction_ref' => $reference,
                 'user_id'         => $user->id,
                 'amount'          => $servicePrice,
+                'performed_by'    => $performedBy, 
                 'description'     => "BVN {$serviceKey} Request for {$modField->field_name}",
                 'type'            => 'debit',
                 'status'          => 'completed',
@@ -150,6 +152,7 @@ class BvnServicesController extends Controller
                     'bvn'                    => $validated['bvn'],
                     'nin'                    => $validated['nin'],
                     'field'                  => $validated['field'],
+                    'performed_by'           => $performedBy,   
                     'transaction_id'         => $transaction->id,
                     'submission_date'        => now(),
                     'status'                 => 'pending',
@@ -163,6 +166,7 @@ class BvnServicesController extends Controller
                     'ticket_id'              => $validated['ticket_id'],
                     'batch_id'               => $validated['batch_id'],
                     'transaction_id'         => $transaction->id,
+                    'performed_by'           => $performedBy, 
                     'submission_date'        => now(),
                     'status'                 => 'pending',
                 ]);

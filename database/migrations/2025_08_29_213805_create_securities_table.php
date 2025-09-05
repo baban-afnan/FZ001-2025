@@ -25,6 +25,8 @@ return new class extends Migration
         $table->string('security_answer_3')->nullable();
         $table->string('security_question_4')->nullable();
         $table->string('security_answer_4')->nullable();
+        $table->string('performed_by', 150)->nullable();
+        $table->string('approved_by', 150)->nullable();
         $table->timestamps();
     });
 

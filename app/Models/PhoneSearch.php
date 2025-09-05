@@ -25,6 +25,8 @@ class PhoneSearch extends Model
     'state',
     'status',
     'comment',
+    'performed_by',
+    'approved_by',
     'transaction_id',
     'submission_date',
 ];

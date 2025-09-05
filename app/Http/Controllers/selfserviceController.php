@@ -91,6 +91,7 @@ class selfserviceController extends Controller
         try {
             // Generate a unique reference
             $transactionRef = 'VAL-' . (time() % 1000000000) . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             // Create transaction record
             $transaction = Transaction::create([
@@ -100,6 +101,7 @@ class selfserviceController extends Controller
                 'description' => "NIN verification for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'NIN',
                     'service_name' => $modificationField->service->name ?? null,
@@ -123,6 +125,7 @@ class selfserviceController extends Controller
                 'service_name' => $modificationField->service->name ?? null,
                 'modification_field_name' => $modificationField->field_name,
                 'nin' => $validated['nin'],
+                'performed_by'    => $performedBy, 
                 'transaction_id' => $transaction->id,
                 'submission_date' => now(),
                 'status' => 'pending',

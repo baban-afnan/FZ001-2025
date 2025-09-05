@@ -34,6 +34,8 @@ class Verification extends Model
         'residence_lga',
         'residence_town',
         'trackingId',
+        'performed_by',
+        'approved_by',
         'signature'
     ];
     public function user()

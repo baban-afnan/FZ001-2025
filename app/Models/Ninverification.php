@@ -53,6 +53,8 @@ class Ninverification extends Model
     'self_origin_state',
     'self_origin_lga',
     'self_origin_place',
+    'performed_by',
+    'approved_by',
     'transaction_id',
     'submission_date',
     'status',

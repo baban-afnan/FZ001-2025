@@ -23,6 +23,8 @@ class MigrationForm extends Model
     'cac_upload',
     'reference',
     'status',
+    'performed_by',
+    'approved_by',
 ];
 
 

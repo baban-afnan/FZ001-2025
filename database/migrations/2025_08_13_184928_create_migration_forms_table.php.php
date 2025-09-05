@@ -23,6 +23,8 @@ return new class extends Migration {
             $table->string('cac_upload')->nullable();
             $table->enum('status', ['pending', 'processing', 'resolved', 'rejected', 'query'])->default('pending');
             $table->text('comment')->nullable();
+            $table->string('performed_by', 150)->nullable();
+            $table->string('approved_by', 150)->nullable();
             $table->timestamps();
             
             // Indexes

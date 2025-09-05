@@ -13,7 +13,8 @@ return new class extends Migration {
             $table->string('payer_name')->nullable();
             $table->string('referenceId')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->string('performed_by')->nullable();
+            $table->string('performed_by', 150)->nullable();
+            $table->string('approved_by', 150)->nullable();
             $table->decimal('amount', 10, 2);
             $table->decimal('fee', 10, 2)->default(0.00);
             $table->decimal('net_amount', 10, 2)->default(0.00);

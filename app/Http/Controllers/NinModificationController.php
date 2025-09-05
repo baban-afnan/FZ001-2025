@@ -114,6 +114,7 @@ class NinModificationController extends Controller
         try {
             // Generate a unique reference
             $transactionRef = 'NIN-' . (time() % 1000000000) . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             // Create transaction record
             $transaction = Transaction::create([
@@ -123,6 +124,7 @@ class NinModificationController extends Controller
                 'description' => "NIN modification for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => $service->name,
                     'modification_field' => $modificationField->field_name,
@@ -146,6 +148,7 @@ class NinModificationController extends Controller
                 'modification_field_name' => $modificationField->field_name, 
                 'nin' => $validated['nin'],
                 'description' => $validated['description'],
+                'performed_by'    => $performedBy, 
                 'transaction_id' => $transaction->id,
                 'submission_date' => now(),
                 'status' => 'pending',

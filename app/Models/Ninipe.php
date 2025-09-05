@@ -17,7 +17,9 @@ class Ninipe extends Model
         'transaction_id',
         'submission_date',
         'status',
-        'comment'
+        'comment',
+        'performed_by',
+        'approved_by',
     ];
 
     protected $casts = [

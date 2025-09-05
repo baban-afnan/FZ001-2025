@@ -15,12 +15,14 @@ return new class extends Migration {
     $table->foreignId('service_id')->constrained('services');
     $table->string('ticket_id', 8);
     $table->string('batch_id', 7);
+    $table->string('performed_by', 150)->nullable();
+    $table->string('approved_by', 150)->nullable();
     $table->foreignId('transaction_id')->constrained();
     $table->dateTime('submission_date');
     $table->enum('status', ['pending', 'processing', 'resolved', 'rejected', 'query', 'remark'])->default('pending');
     $table->text('comment')->nullable();
     $table->timestamps();
-          });
+     });
 
     }
 

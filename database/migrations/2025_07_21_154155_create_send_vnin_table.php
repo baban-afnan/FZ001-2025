@@ -17,6 +17,8 @@ return new class extends Migration {
     $table->string('bvn', 11);
     $table->string('nin', 11);
     $table->text('field')->nullable();
+    $table->string('performed_by', 150)->nullable();
+    $table->string('approved_by', 150)->nullable();
     $table->foreignId('transaction_id')->constrained();
     $table->dateTime('submission_date');
     $table->enum('status', ['pending', 'processing', 'resolved', 'rejected', 'query', 'remark'])->default('pending');

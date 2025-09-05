@@ -91,6 +91,7 @@ class NinValidationController extends Controller
         try {
             // Generate a unique reference
             $transactionRef = 'VAL-' . (time() % 1000000000) . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             // Create transaction record
             $transaction = Transaction::create([
@@ -100,6 +101,7 @@ class NinValidationController extends Controller
                 'description' => "NIN verification for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'NIN',
                     'service_name' => $modificationField->service->name ?? null,
@@ -110,6 +112,7 @@ class NinValidationController extends Controller
                     'price_details' => [
                         'base_price' => $modificationField->base_price,
                         'user_price' => $servicePrice,
+                        'performed_by'    => $performedBy, 
                     ],
                 ],
             ]);
@@ -124,6 +127,7 @@ class NinValidationController extends Controller
                 'modification_field_name' => $modificationField->field_name,
                 'nin' => $validated['nin'],
                 'transaction_id' => $transaction->id,
+                'performed_by'    => $performedBy, 
                 'submission_date' => now(),
                 'status' => 'pending',
             ]);

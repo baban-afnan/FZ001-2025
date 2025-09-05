@@ -77,7 +77,7 @@
               
               <!-- Get BVN Link -->
               <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                <a href="#" class="card vip-service-card h-100 text-decoration-none">
+                <a href="{{ url('/fhc-portal') }}" class="card vip-service-card h-100 text-decoration-none">
                   <div class="card-body text-center p-3">
                     <div class="vip-icon-wrapper bg-gold-light mb-3 mx-auto">
                       <img src="../assets/images/apps/court.png" alt="Get BVN Link" class="img-fluid" style="width: 40px; height: 40px;">

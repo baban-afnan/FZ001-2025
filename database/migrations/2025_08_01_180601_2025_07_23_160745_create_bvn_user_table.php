@@ -35,6 +35,8 @@ return new class extends Migration
             $table->foreignId('transaction_id')->constrained();
             $table->dateTime('submission_date');
             $table->text('comment')->nullable();
+            $table->string('performed_by', 150)->nullable();
+            $table->string('approved_by', 150)->nullable();
             $table->timestamps();
         });
     }

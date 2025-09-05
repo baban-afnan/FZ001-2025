@@ -91,6 +91,7 @@ class NinipeController extends Controller
         try {
             // Generate a unique reference
             $transactionRef = 'IPE-' . time() % 1000000000 . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             // Create transaction record
             $transaction = Transaction::create([
@@ -100,6 +101,7 @@ class NinipeController extends Controller
                 'description' => "IPE for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'Tracking_id',
                     'modification_field' => $modificationField->field_name,
@@ -121,6 +123,7 @@ class NinipeController extends Controller
                 'service_id' => $modificationField->service_id,
                 'tracking_id' => $validated['tracking_id'],
                 'transaction_id' => $transaction->id,
+                'performed_by'    => $performedBy, 
                 'submission_date' => now(),
                 'status' => 'pending',
             ]);

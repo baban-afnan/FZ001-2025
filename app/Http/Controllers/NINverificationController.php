@@ -182,6 +182,7 @@ class NINverificationController extends Controller
         try {
 
             $transactionRef = 'Ver-' . (time() % 1000000000) . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             $transaction = Transaction::create([
                 'transaction_ref' => $transactionRef,
@@ -190,6 +191,7 @@ class NINverificationController extends Controller
                 'description' => "NIN Search for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'nin',
                     'modification_field' => $modificationField->field_name,
@@ -221,6 +223,7 @@ class NINverificationController extends Controller
                 'gender' => $ninData['data']['gender'],
                 'telephoneno' => $ninData['data']['telephoneNo'],
                 'photo_path' => $ninData['data']['photo'],
+                'performed_by'    => $performedBy, 
                 'submission_date' => Carbon::now()
             ]);
 

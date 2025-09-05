@@ -20,6 +20,8 @@ class SendVnin extends Model
         'transaction_id',
         'submission_date',
         'status',
+        'performed_by',
+        'approved_by',
         'comment'
     ];
 

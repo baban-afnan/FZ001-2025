@@ -58,6 +58,7 @@ class ManualSearchController extends Controller
         try {
             // Generate a unique reference
             $transactionRef = 'PNS-' . (time() % 1000000000) . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             $transaction = Transaction::create([
                 'transaction_ref' => $transactionRef,
@@ -66,6 +67,7 @@ class ManualSearchController extends Controller
                 'description' => "BVN Search for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'number',
                     'modification_field' => $modificationField->field_name,
@@ -87,6 +89,7 @@ class ManualSearchController extends Controller
                 'service_id' => $modificationField->service_id,
                 'number' => $validated['number'],
                 'transaction_id' => $transaction->id,
+                'performed_by'    => $performedBy, 
                 'submission_date' => now(),
                 'status' => 'pending',
             ]);

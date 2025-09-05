@@ -27,6 +27,7 @@ class BvnModification extends Model
     'status',
     'comment',
     'performed_by',
+    'approved_by',
 ];
 
 

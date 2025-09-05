@@ -19,6 +19,8 @@ return new class extends Migration {
           $table->dateTime('submission_date');
           $table->enum('status', ['pending', 'processing', 'resolved', 'rejected', 'query', 'remark'])->default('pending');
           $table->text('comment')->nullable();
+          $table->string('performed_by', 150)->nullable();
+          $table->string('approved_by', 150)->nullable();
           $table->timestamps();
 });
     }

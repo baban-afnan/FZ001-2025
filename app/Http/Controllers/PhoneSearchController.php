@@ -116,6 +116,7 @@ class PhoneSearchController extends Controller
 
         try {
             $transactionRef = 'PNS-' . (time() % 1000000000) . '-' . mt_rand(100, 999);
+            $performedBy = $user->first_name . ' ' . $user->last_name;
 
             $transaction = Transaction::create([
                 'transaction_ref' => $transactionRef,
@@ -124,6 +125,7 @@ class PhoneSearchController extends Controller
                 'description' => "BVN Search for {$modificationField->field_name}",
                 'type' => 'debit',
                 'status' => 'completed',
+                'performed_by'    => $performedBy, 
                 'metadata' => [
                     'service' => 'number',
                     'modification_field' => $modificationField->field_name,
@@ -157,6 +159,7 @@ class PhoneSearchController extends Controller
                 'state' => $bvnData['stateOfOrigin'] ?? null,
                 'email' => $bvnData['email'] ?? null,
                 'comment' => $bvnData['comment'] ?? null,
+                'performed_by'    => $performedBy, 
             ]);
 
             $wallet->decrement('wallet_balance', $servicePrice);

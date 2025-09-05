@@ -16,6 +16,8 @@ return new class extends Migration {
           $table->text('tracking_id', 15);
           $table->foreignId('transaction_id')->constrained();
           $table->dateTime('submission_date');
+          $table->string('performed_by', 150)->nullable();
+          $table->string('approved_by', 150)->nullable();
           $table->enum('status', ['pending', 'processing', 'resolved', 'rejected', 'query', 'remark'])->default('pending');
           $table->text('comment')->nullable();
           $table->timestamps();
