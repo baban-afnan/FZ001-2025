@@ -63,7 +63,7 @@
                                  <button type="button" class="btn btn-outline-primary btn-sm ms-2" data-bs-toggle="modal" data-bs-target="#sampleInfoModal">
                                         <i class="bi bi-info-circle"></i> View Guidelines
                                     </button>
-                                <input class="form-control" name="nin" type="text" required placeholder="Enter 11 Digit BVN number" maxlength="11" minlength="11" 
+                                <input class="form-control" name="nin" type="text" required placeholder="Enter 11 Digit NIN number" maxlength="11" minlength="11" 
                                        pattern="[0-9]{11}" title="11-digit NIN number" 
                                        required value="{{ old('nin') }}">
                             </div>
