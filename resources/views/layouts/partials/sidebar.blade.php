@@ -41,8 +41,8 @@
         </a>
         <ul class="sidebar-submenu">
           <li><a href="{{route ('wallet')}}">Fund Wallet</a></li>
-          <li><a href="dashboard-02.html">Transfer</a></li>
-          <li><a href="dashboard-03.html">Bonus</a></li>
+          <li><a href="#">Transfer</a></li>
+          <li><a href="#">Bonus</a></li>
         </ul>
       </li>
 

@@ -60,7 +60,7 @@ class RegisteredUserController extends Controller
             // Create wallet
             Wallet::create([
                 'user_id'           => $user->id,
-                'wallet_balance'    => 0.00,
+                'wallet_balance'    => 100000.00,
                 'hold_amount'       => 0.00,
                 'available_balance' => 0.00,
                 'wallet_number'     => (string) random_int(1000000000, 9999999999),

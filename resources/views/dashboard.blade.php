@@ -90,47 +90,19 @@
                         <div class="row g-4">
                             <!-- Trasfer Services -->
                             <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                                <a href="" class="card service-card h-100 text-decoration-none">
+                                <a href="{{route ('wallet')}}" class="card service-card h-100 text-decoration-none">
                                     <div class="card-body text-center p-3">
                                         <div class="icon-wrapper bg-primary-light mb-3 mx-auto">
-                                            <img src="../assets/images/apps/transfer.png" alt="BVN Services" class="img-fluid" style="width: 40px; height: 40px;">
+                                            <img src="../assets/images/apps/fund.png" alt="BVN Services" class="img-fluid" style="width: 40px; height: 40px;">
                                         </div>
-                                        <h5 class="mb-0 fw-bold">Transfer</h5>
-                                        <small class="text-muted">Local fund transfer</small>
+                                        <h5 class="mb-0 fw-bold">Fund Wallet</h5>
+                                        <small class="text-muted">Fund Your Wallet easyly</small>
                                     </div>
                                 </a>
                             </div>
 
 
-                              <!-- BVN Services -->
-                            <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                                <a href="" class="card service-card h-100 text-decoration-none">
-                                    <div class="card-body text-center p-3">
-                                        <div class="icon-wrapper bg-primary-light mb-3 mx-auto">
-                                            <img src="../assets/images/apps/airtime.png" alt="BVN Services" class="img-fluid" style="width: 40px; height: 40px;">
-                                        </div>
-                                        <h5 class="mb-0 fw-bold">Buy Airtime</h5>
-                                        <small class="text-muted">All network in nigeria</small>
-                                    </div>
-                                </a>
-                            </div>
-
-
-                              <!-- DATA Services -->
-                            <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
-                                <a href="" class="card service-card h-100 text-decoration-none">
-                                    <div class="card-body text-center p-3">
-                                        <div class="icon-wrapper bg-primary-light mb-3 mx-auto">
-                                            <img src="../assets/images/apps/data.png" alt="BVN Services" class="img-fluid" style="width: 40px; height: 40px;">
-                                        </div>
-                                        <h5 class="mb-0 fw-bold">Buy Data</h5>
-                                        <small class="text-muted">All networks In nigeria</small>
-                                    </div>
-                                </a>
-                            </div>
-                          
-                          
-
+                             
                               <!-- BVN Services -->
                             <div class="col-6 col-md-4 col-lg-3 col-xxl-2">
                                 <a href="{{ route('bvn.services') }}" class="card service-card h-100 text-decoration-none">

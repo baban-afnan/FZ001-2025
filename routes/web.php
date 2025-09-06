@@ -67,6 +67,7 @@ Route::post('/virtual/account/create', [WalletController::class, 'createWallet']
     Route::get('/profile - settings', [ServicesController::class, 'settingServices'])->name('settings.services');
     Route::get('/transaction - pin', [ServicesController::class, 'transactionPin'])->name('transaction.pin');
     Route::get('/vip - services', [ServicesController::class, 'vipservices'])->name('vip.services');
+    
 
 
     // CRM Routes
